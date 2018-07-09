@@ -1,0 +1,82 @@
+<div id="sca-qv-showqv" class="sca-bm" style="display: none !important;">  
+ <div>
+	<!--START PRODUCT-->
+	 <div class="quick-view-container fancyox-view-detail">
+	    <div id="sca-qv-left" class="sca-left">
+            <div id="sca-qv-sale"  class="sca-qv-sale sca-qv-hidden">Sale</div>
+			<!-- START ZOOM IMAGE-->
+			 <div class="sca-qv-zoom-container">
+                    <div class="zoomWrapper">
+					  <div id="sca-qv-zoomcontainer" class='sqa-qv-zoomcontainer'>
+                              <!-- Main image  ! DON'T PUT CONTENT HERE! -->     
+                      </div>
+                       
+                    </div>
+             </div>
+			<!-- END ZOOM IMAGE-->
+          
+            <!-- START GALLERY-->
+            <div id="sca-qv-galleryid" class="sca-qv-gallery"> 
+              		<!-- Collection of image ! DON'T PUT CONTENT HERE!-->
+            </div>	
+            <!-- END GALLERY-->
+        </div>
+
+		<!--START BUY-->
+		<div id ="sca-qv-right" class="sca-right">
+          	<!-- -------------------------- -->
+			<div id="sca-qv-title" class="name-title" >
+					<!-- Title of product ! DON'T PUT CONTENT HERE!-->
+			</div>
+			<!-- -------------------------- -->
+			<div id ="sca-qv-price-container" class="sca-qv-price-container"  >
+					<!-- price information of product ! DON'T PUT CONTENT HERE!-->
+			</div>
+			<!-- -------------------------- -->
+			<div id="sca-qv-des" class="sca-qv-row">
+					<!-- description of product ! DON'T PUT CONTENT HERE!-->
+			</div>
+			<!-- -------------------------- -->
+			<div class="sca-qv-row">
+				<a id="sca-qv-detail"  href="" > 	View full product details → </a>
+			</div>
+		<!-- ----------------------------------------------------------------------- -->
+            <div id='sca-qv-cartform'>
+	          <form id="sca-qv-add-item-form"  method="post">     
+                <!-- Begin product options ! DON'T PUT CONTENT HERE!-->
+                <div class="sca-qv-product-options">
+                  <!-- -------------------------- -->
+                  <div id="sca-qv-variant-options" class="sca-qv-optionrow">
+							<!-- variant options  of product  ! DON'T PUT CONTENT HERE!-->
+		          </div>  
+                  <!-- -------------------------- -->
+                  <div class="sca-qv-optionrow">	    
+                    <label>Quantity</label>
+          	        <input id="sca-qv-quantity" min="1" type="number" name="quantity" value="1"  />
+                  </div>
+				  <!-- -------------------------- -->
+                  <div class="sca-qv-optionrow">
+                     <p id="sca-qv-unavailable" class="sca-sold-out sca-qv-hidden">Unavailable</p>
+                     <p id="sca-qv-sold-out" class="sca-sold-out sca-qv-hidden">Sold Out</p>
+                     <input type="submit" class="sca-qv-cartbtn sca-qv-hidden" value="ADD TO CART" />
+                     
+                  </div>
+                  <!-- -------------------------- -->
+                </div>
+               <!-- End product options -->
+            </form>
+         </div>
+	   </div>
+	   <!--END BUY-->
+    </div>
+	<!--END PRODUCT-->
+ </div>
+</div>
+
+
+<div id="scaqv-metadata" 
+autoconfig = "yes" 
+noimage = "{{ 'sca-qv-no-image.jpg' | asset_url }}" 
+moneyFormat = '{{ shop.money_format }}' 
+jsondata = "{{ shop.metafields.sca-np-qv.settings }}" ></div>
+{{ 'sca-qv-scripts-noconfig.js' | asset_url  | script_tag }} 

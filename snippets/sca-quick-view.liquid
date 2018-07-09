@@ -1,0 +1,9 @@
+<div style="display: none !important" ><a class="sca-qv-button"  href="#sca-qv-showqv"title="Quick View" handle="{{product.handle}}" ></a></div>
+
+
+
+{% if is_loaded_settings %}
+{% else %}
+{% assign is_loaded_settings = true  %}
+<div id='sca-qv-metadata' style="display: none !important" jsondata='{{ shop.metafields.sca-np-qv.settings}}' moneyFormat="{{ shop.money_format }}" noimage="{{ 'sca-qv-no-image.jpg' | asset_url }}"></div>
+{% endif %}

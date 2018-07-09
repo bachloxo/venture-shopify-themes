@@ -1,0 +1,69 @@
+<style>
+      @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);.wishlist-pro-wrapper{font-family:"Open Sans",sans-serif}.wishlist-pro-wrapper a{color:#8e8a8a;text-decoration:none}.wishlist-pro-wrapper ul{display:inline;margin:0;padding:0;list-style:none}.wishlist-pro-wrapper ul li{display:inline-block;position:relative;padding:5px 10px;margin:0;background:#fff;cursor:pointer;-webkit-transition:all .2s;-moz-transition:all .2s;-ms-transition:all .2s;-o-transition:all .2s;transition:all .2s}.wishlist-pro-wrapper ul li:hover{color:#C52424}.wishlist-pro-wrapper ul li ul{padding:0;position:absolute;top:28px;left:16;min-width:160px;display:none;opacity:0;visibility:hidden;-webkit-transiton:opacity .2s;-moz-transition:opacity .2s;-ms-transition:opacity .2s;-o-transition:opacity .2s;-transition:opacity .2s;-webkit-box-shadow:4px 6px 9px -6px rgba(0,0,0,.48);-moz-box-shadow:4px 6px 9px -6px rgba(0,0,0,.48);box-shadow:4px 6px 9px -6px rgba(0,0,0,.48);-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;border:1px solid #EFEFEF}.wishlist-pro-wrapper ul li ul li{display:block;color:#f45b4f;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.wishlist-pro-wrapper ul li ul li:hover{background:#FFF}.wishlist-pro-wrapper ul li:hover ul{display:block;opacity:1;visibility:visible};
+  </style>
+  {% comment %} Wishlist PRO v0.1 wishlist button and list container. No need to edit this snippet{% endcomment %}
+  {% if template contains "product" %}
+  {% if customer and customer.id != blank %}{% comment %}Allows logged in customer create and retrieve wishlist using their account{% endcomment %}
+  <div class="wishlist-pro-container">
+    <ul style="list-style: none; margin-left: 0px;">
+      <li style="float: left;">
+        <div class="wishlist-pro-wrapper">
+        </div>
+      </li>
+    </ul>
+</div>
+  <script type="text/javascript">
+
+    var cus_wishlist_pro = {
+      id: {{ customer.id }},
+      email: "{{ customer.email }}",
+      first_name: "{{ customer.first_name }}",
+      shopify_domain: "{{ shop.permanent_domain }}",
+      product_id: {{ product.id }},
+      product_variant_id: {{ product.variants.first.id }},
+      product_image_url:"{{ product.images.first | img_url: "medium" }}",
+      api_version: "1.0"
+    };
+  </script>
+
+  <script type="text/template" id='wishlist-pro-wrapper'>
+    <% if ( wishlists.is_shop_active == false ) { %>
+    <% } else if( wishlists.customer_present == false){ %>
+          <a href="#" class="add-to-wishlist"><i class="fa fa-heart-o"></i> <span>Add to Wishlist</span></a>
+     <% } else { %>
+        <% if ( wishlists.items=="" ) { %>
+          <a href="#" class="add-to-wishlist"><i class="fa fa-heart-o"></i> <span>Add to Wishlist</span></a>
+        <% } else { %>
+              <ul><li>
+              <% if ( wishlists.has_product ) { %>
+                  <a href="#" class="in_items"><i class="fa fa-heart"></i> <span>In your Wishlist</span></a>
+              <% } else { %>
+                  <a href="#" class="in_items"><i class="fa fa-heart-o"></i> <span>Add To Wishlist</span></a>
+              <% } %>
+              <ul>
+            <% _.each(wishlists.items,function(item,key,list){ %>
+                       <% if ( item.has_items ) { %>
+                      <li id="<%= item.id %>" class='in_wl'><i class='fa fa-heart'></i>&nbsp<%= item.name %></li>
+                       <% } else { %>
+                          <li id="<%= item.id %>" class='not_in_wl'><i class='fa fa-heart-o'></i>&nbsp<%= item.name %></li>
+                       <% } %>
+                  <% }); %>
+              </ul>
+              </li></ul>
+        <% } %>
+     <% } %>
+  </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script type="text/javascript">!function(){function t(){e=window.jQuery.noConflict(!0),i()}function i(){e(document).ready(function(t){var i=s+"/wishlist/load_snippet?callback=?";t.getJSON(i,cus_wishlist_pro,function(i){var e=_.template(t("#wishlist-pro-wrapper").html());t(".wishlist-pro-wrapper").html(e({wishlists:i.wishlists}))}),t(document).on("click",".add-to-wishlist",function(){return this_item=t(this),this_item.find("i").removeClass("fa-heart-o"),this_item.find("i").addClass("fa-refresh fa-spin"),t.getJSON(s+"/wishlist/add_to_wish_list?callback=?",cus_wishlist_pro,function(t){"done"==t.msg&&(this_item.removeClass("add-to-wishlist"),this_item.addClass("in_items"),this_item.find("i").removeClass("fa-refresh fa-spin").addClass("fa-heart"))}),!1}),t(document).on("click",".not_in_wl",function(){return this_item=t(this),item_id=this_item.attr("id"),this_item.find("i").removeClass("fa-heart-o"),this_item.find("i").addClass("fa-refresh fa-spin"),cus_wishlist_pro.item_id=item_id,t.getJSON(s+"/wishlist/add_to_wish_list_with_item?callback=?",cus_wishlist_pro,function(t){"done"==t.msg&&(this_item.removeClass("not_in_wl"),this_item.addClass("in_wl"),this_item.find("i").removeClass("fa-refresh fa-spin").addClass("fa-heart"))}),!1}),t(document).on("click",".in_items , .in_wl",function(i){var e=t(this).attr("id");""==e?document.cookie="wlpro= ;path=/":document.cookie="wlpro="+e+";path=/",window.location.href="/pages/wishlist-pro",i.preventDefault()})})}var e,s="https://wishlistpro.microapps.com";if(void 0===window.jQuery){var a=document.createElement("script");a.setAttribute("type","text/javascript"),a.setAttribute("src","//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"),a.readyState?a.onreadystatechange=function(){("complete"==this.readyState||"loaded"==this.readyState)&&t()}:a.onload=t,(document.getElementsByTagName("head")[0]||document.documentElement).appendChild(a)}else e=window.jQuery,i()}();</script>
+  {% else %}
+<div class="wishlist-pro-container">
+    <ul style="list-style: none; margin-left: 0px;">
+      <li style="float: left;">
+        <div class="wishlist-pro-wrapper">
+          <ul><li><a href="/account" class="in_items"><i class="fa fa-heart-o"></i> <span>Add To Wishlist</span></a></li></ul>
+        </div>
+      </li>
+    </ul>
+</div>
+  {% endif %}
+  {% endif %}

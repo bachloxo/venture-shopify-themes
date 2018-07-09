@@ -1,0 +1,119 @@
+<section class="reason-to-buy">
+  <h2><span>REASONS TO BUY FROM US</span></h2>
+  <div class="reason-to-buy-wrapper">
+    <div class="reason-to-buy-inner grid">
+      <div class="grid__cell">
+          <img src="//cdn.shopify.com/s/files/1/2212/5665/t/3/assets/satisfaction-guarantee.png?10634946292118293918">
+          <h3>Satisfaction Guarantee</h3>We stand by our high-quality products and your satisfaction is guaranteed.
+      </div>
+      <div class="grid__cell">
+          <img src="//cdn.shopify.com/s/files/1/2212/5665/t/3/assets/secure-checkout.png?10634946292118293918">
+          <h3>Secure Checkout</h3>Pay with the world’s most popular and secure payment methods.
+      </div>
+
+      <div class="grid__cell">
+          <img src="//cdn.shopify.com/s/files/1/2212/5665/t/3/assets/great-value.png?10634946292118293918">
+          <h3>Great Value</h3>We offer competitive prices on all of our exclusive products.
+      </div>
+      <div class="grid__cell">
+          <img src="//cdn.shopify.com/s/files/1/2212/5665/t/3/assets/free-worldwide-delivery.png?10634946292118293918">
+          <h3>Free Worldwide Delivery</h3>We proudly offer Free Shipping via ePacket. Estimated Delivery between 7 to 14 business days.
+      </div>
+    </div>
+  </div>
+</section>
+<section class="newsletter">
+  <div class="container">
+    {% unless section.settings.heading == blank %}
+      <h2 class="newsletter__title">{{ section.settings.heading | escape }}</h2>
+    {% endunless %}
+  </div>
+  <div class="newsletter__form">
+    {% form 'customer' %}
+      {{ form.errors | default_errors }}
+      {% if form.posted_successfully? %}
+        <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+      {% else %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <!-- <label for="NewsletterEmail-{{ block.id }}" class="label--hidden">{{ 'general.newsletter_form.newsletter_label' | t }}</label> -->
+        <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="NewsletterEmail-{{ block.id }}" class="newsletter__email" autocorrect="off" autocapitalize="off">
+        <input class="newsletter__submit button" type="submit" value="Subscribe"></form>
+          <!-- <div class="input-group__btn">
+            <button type="submit" class="newsletter__submit button" name="commit">
+              {% include 'icon-arrow-right' %}
+              <span class="icon__fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
+            </button>
+          </div> -->
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
+<!-- <div class="page-width">
+  <div class="section-block section-block--padding">
+    <div class="{% if section.settings.heading != blank or section.settings.subheading != blank %}section-block__header {% endif %}text-center">
+      {% unless section.settings.heading == blank %}
+        <h4 class="h1--mini section-block__title">{{ section.settings.heading | escape }}</h4>
+      {% endunless %}
+      {% unless section.settings.subheading == blank %}
+        <div class="section-block__subtext">{{ section.settings.subheading }}</div>
+      {% endunless %}
+    </div>
+    <div class="grid">
+      <div class="grid__item medium-up--two-thirds medium-up--push-one-sixth">
+        <div class="form-vertical">
+          {% form 'customer' %}
+            {{ form.errors | default_errors }}
+            {% if form.posted_successfully? %}
+              <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+            {% else %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <label for="NewsletterEmail-{{ block.id }}" class="label--hidden">{{ 'general.newsletter_form.newsletter_label' | t }}</label>
+              <div class="input-group">
+                <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="NewsletterEmail-{{ block.id }}" class="input-group__field" autocorrect="off" autocapitalize="off">
+                <div class="input-group__btn">
+                  <button type="submit" class="btn btn--narrow" name="commit">
+                    {% include 'icon-arrow-right' %}
+                    <span class="icon__fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
+                  </button>
+                </div>
+              </div>
+            {% endif %}
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Subscribe to our newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
+      },
+      {
+        "type": "paragraph",
+        "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Newsletter",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}

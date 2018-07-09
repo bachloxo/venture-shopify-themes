@@ -1,0 +1,293 @@
+<footer class="footer" role="contentinfo">
+  <div class="inner">
+    <div class="footer__wrapper">
+      {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'social' %}
+              <div class="footer__module footer__social">
+                {% if block.settings.title != blank %}
+                  <h3 class="footer__title text-{{ block.settings.align }}">{{ block.settings.title | escape }}</h3>
+                {% endif %}
+                <ul class="social-media social-media--vertical text-{{ block.settings.align }}">
+                  {% if settings.social_facebook_link != blank %}
+                    <li class="social-media__item">
+                      <a href="{{ settings.social_facebook_link | escape }}" target="_blank" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                        {% include 'icon-facebook' %}
+                        <span class="icon__fallback-text">Facebook</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_twitter_link != blank %}
+                    <li class="social-media__item">
+                      <a href="{{ settings.social_twitter_link | escape }}" target="_blank" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                        {% include 'icon-twitter' %}
+                        <span class="icon__fallback-text">Twitter</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_instagram_link != blank %}
+                    <li class="social-media__item">
+                      <a href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                        {% include 'icon-instagram' %}
+                        <span class="icon__fallback-text">Instagram</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  <!-- {% if settings.social_pinterest_link != blank %}
+                    <li class="social-media__item">
+                      <a href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                        {% include 'icon-pinterest' %}
+                        <span class="icon__fallback-text">Pinterest</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_tumblr_link != blank %}
+                    <li class="social-media__item">
+                      <a href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                        {% include 'icon-tumblr' %}
+                        <span class="icon__fallback-text">Tumblr</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_snapchat_link != blank %}
+                    <li class="social-media__item">
+                      <a href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                        {% include 'icon-snapchat' %}
+                        <span class="icon__fallback-text">Snapchat</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_youtube_link != blank %}
+                    <li class="social-media__item">
+                      <a href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                        {% include 'icon-youtube' %}
+                        <span class="icon__fallback-text">YouTube</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_vimeo_link != blank %}
+                    <li class="social-media__item">
+                      <a href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                        {% include 'icon-vimeo' %}
+                        <span class="icon__fallback-text">Vimeo</span>
+                      </a>
+                    </li>
+                  {% endif %} -->
+                </ul>
+              </div>
+
+            {% when 'menu' %}
+              {% if linklists[block.settings.link_list].links.size > 0 %}
+              <div class="footer__module footer__links" {{ block.shopify_attributes }}>
+                  <h3 class="footer__title">{{ linklists[block.settings.link_list].title }}</h3>
+                  <ul class="footer__linklist">
+                    {% for link in linklists[block.settings.link_list].links %}
+                      <li class="footer__linklist-item"><a class="footer__linklist-link" href="{{ link.url }}">{{ link.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+              </div>
+              {% endif %}
+
+            {% when 'text' %}
+              <div class="footer__module footer__contact">
+                <h3 class="footer__title">{{ block.settings.title | escape }}</h3>
+                <p class="footer__email">{{ block.settings.text }}</p>
+              </div>
+
+            {% when 'newsletter' %}
+              <style>
+                .site-footer__newsletter-input {
+                  background-color: {{ block.settings.color_newsletter_input }};
+                  color: {{ block.settings.color_newsletter_input_text }};
+                }
+
+                .site-footer__newsletter-input::-webkit-input-placeholder {
+                  color: {{ block.settings.color_newsletter_input_text }};
+                  opacity: 0.7;
+                }
+
+                .site-footer__newsletter-input:-moz-placeholder {
+                  color: {{ block.settings.color_newsletter_input_text }};
+                  opacity: 0.7;
+                }
+
+                .site-footer__newsletter-input:-ms-input-placeholder {
+                  color: {{ block.settings.color_newsletter_input_text }};
+                  opacity: 0.7;
+                }
+
+                .site-footer__newsletter-input::-ms-input-placeholder {
+                  color: {{ block.settings.color_newsletter_input_text }};
+                  opacity: 1;
+                }
+              </style>
+              <div class="grid__item large-up--two-fifths site-footer__section" {{ block.shopify_attributes }}>
+                <div class="site-footer__section">
+                <h4 class="site-footer__section-title h1">
+                  {% if block.settings.title != blank %}
+                    {{ block.settings.title | escape }}
+                  {% endif %}
+                </h4>
+                <div class="form-vertical">
+                  {% form 'customer' %}
+                    {{ form.errors | default_errors }}
+                    {% if form.posted_successfully? %}
+                      <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                    {% else %}
+                      <input type="hidden" name="contact[tags]" value="newsletter">
+                      <label for="NewsletterEmail-{{ block.id }}" class="site-footer__newsletter-label">
+                        {% if block.settings.subheading != blank %}
+                          {{ block.settings.subheading }}
+                        {% endif %}
+                      </label>
+                      <div class="input-group">
+                        <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="NewsletterEmail-{{ block.id }}" class="input-group__field site-footer__newsletter-input" autocorrect="off" autocapitalize="off">
+                        <div class="input-group__btn">
+                          <button type="submit" class="btn btn--narrow" name="commit">
+                            {% include 'icon-arrow-right' %}
+                            <span class="icon__fallback-text">{{ 'general.newsletter_form.submit' | t }}</span>
+                          </button>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endform %}
+                </div>
+                </div>
+              </div>
+
+          {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="site-footer__copyright">
+    <div class="page-width">
+      <div class="grid medium-up--grid--table">
+        <div class="grid__item medium-up--one-half">
+          <small>&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
+        </div>
+        <div class="grid__item medium-up--one-half medium-up--text-right">
+          {% unless shop.enabled_payment_types == empty %}
+            {% assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,google_pay,interac,jcb,klarna,litecoin,maestro,master,paypal,shopify_pay,visa' | split: ',' %}
+            <ul class="list--inline payment-icons">
+              {% for type in shop.enabled_payment_types %}
+                {% if payment_icons_available contains type %}
+                  <li>
+                    {% assign icon_name = type | prepend: 'icon-' %}
+                    {% include icon_name %}
+                    <span class="icon__fallback-text">{{type | replace: '_',' '}}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endunless %}
+<style>
+  .methods-of-payment img { padding: 0.2em; }
+  .lt-ie9 .methods-of-payment, .ie8 .methods-of-payment, .oldie .methods-of-payment { display: none; }
+</style>
+<span class="methods-of-payment">
+  <img src="{{ 'american_express' | payment_type_img_url }}" height="35" alt="american express" />
+  <img src="{{ 'jcb' | payment_type_img_url }}" height="35" alt="jcb" />
+  <img src="{{ 'maestro' | payment_type_img_url }}" height="35" alt="maestro" />
+  <img src="{{ 'master' | payment_type_img_url }}" height="35" alt="master" />
+  <img src="{{ 'paypal' | payment_type_img_url }}" height="35" alt="paypal" />
+  <img src="{{ 'visa' | payment_type_img_url }}" height="35" alt="visa" />
+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "blocks": [
+      {
+        "type": "social",
+        "name": "Social accounts",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Follow us"
+          },
+          {
+            "type": "radio",
+            "id": "align",
+            "label": "Icon alignment",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" }
+            ],
+            "default": "left"
+          }
+        ]
+      },
+      {
+        "type": "menu",
+        "name": "Menu",
+        "settings": [
+          {
+            "id": "link_list",
+            "type": "link_list",
+            "label": "Menu",
+            "default": "footer",
+            "info": "This menu won't show dropdown items"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Text column"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Share store details, promotions, or brand content with your customers</p>"
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Newsletter",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "color",
+            "id": "color_newsletter_input",
+            "label": "Newsletter field",
+            "default": "#1a1a1a"
+          },
+          {
+            "type": "color",
+            "id": "color_newsletter_input_text",
+            "label": "Newsletter text",
+            "default": "#fff"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Be in the know"
+          },
+          {
+            "type": "richtext",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "<p>Promotions, new products and sales. Directly to your inbox.</p>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

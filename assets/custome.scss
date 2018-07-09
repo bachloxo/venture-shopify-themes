@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css?family=Unica+One');
+@import url('https://fonts.googleapis.com/css?family=Karla');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    color: #444;
+    margin: 0 0 0.66667em;
+}
+h1, .h1 {
+    font-family: "Unica One","HelveticaNeue","Helvetica Neue",sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 2em;
+}
+h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    letter-spacing: inherit;
+    text-transform: inherit;
+    font-family: "Karla","HelveticaNeue","Helvetica Neue",sans-serif;
+    font-weight: 700;
+}
+.featured-card__header .h1 {
+
+}
+.site-footer__section-title {
+  color: #222;
+  font-size: 1.6em;
+}
+.product-form__item--submit {
+    -ms-flex-preferred-size: 200px;
+    -webkit-flex-basis: 200px;
+    -moz-flex-basis: 200px;
+    flex-basis: 200px;
+}
+label {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: #8e8a8a;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+}
+.product-form__cart-submit {
+    padding-left: 5px;
+    padding-right: 5px;
+    white-space: normal;
+    border-radius: 0px;
+}
+.featured-card__title {
+    font-size: 1.86667em;
+    margin-bottom: 0;
+    color: #1a1a1a;
+}
+.featured-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.06);
+    opacity: 0;
+    transition: opacity 0.15s ease-in;
+    z-index: 1;
+}
+.featured-card__header {
+    position: relative;
+    display: inline-block;
+    padding: 30px 5% 10px;
+    background-color: rgba(0,0,0,0);
+    z-index: 1;
+}
+.grid__item.small--one-half.medium-up--two-thirds.small--text-center.logo {
+    text-align: center;
+}
+.social-top .list--inline.social-icons>li {
+    padding-right: 16px;
+}
+.social-top .icon {
+    color: #333 !important;
+    display: inline-block;
+    fill: currentcolor;
+    width: 20px;
+}
+.social-icons .icon {
+    width: 24px;
+    height: 24px;
+}
+.social-top .list--inline.social-icons {
+    display: inline-block;
+    float: left;
+}
+.site-nav__link {
+    font-size: 0.93333em;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 20px;
+    z-index: 7;
+}
+.site-nav__link {
+    padding: 10px !important;
+}
+.site-header__upper {
+    padding-top: 20px !important;
+    padding-bottom: 15px !important;
+}
+.footer {
+    font-size: 12px;
+    color: #585858 !important;
+    background: #fff;
+    border-top: 1px solid #b7b7b7;
+    font-weight: 400;
+    font-family: Open Sans;
+    line-height: 1.6;
+}
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+.inner {
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.footer__module {
+    margin: 32px 0 34px 0;
+}
+.footer li:not(:last-child) {
+    margin-bottom: 8px;
+}
+.footer__title {
+    margin: 0 0 18px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #323232;
+}
+.footer__phone, .footer__email {
+    margin: 8px 0;
+}
+.footer__module:last-child {
+    margin-bottom: 0;
+}
+.footer__module {
+    margin: 32px 0 34px 0;
+}
+a.footer__linklist-link{
+      color: #585858 !important;
+}
+.newsletter__submit {
+    position: absolute;
+    padding: 11px 14px 12px 14px;
+    width: auto;
+    top: 3px;
+    right: 3px;
+    background: #f8f8f8;
+    color: #585858;
+}
+.page-width .breadcrumb{
+  margin: 10px 0px 10px 0px !important;
+}
+.site-header__logo a:hover img {
+  -moz-transform: scale(1.05);
+   -ms-transform: scale(1.05);
+   -webkit-transform: scale(1.05);
+   transform: scale(1.05)
+}
+.featured-card {
+    display: block;
+    position: relative;
+    height: 380px;
+    text-align: center;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 0 1px 1px;
+    background-color: #fff;
+    padding: 0px;
+}
+.featured-card__image {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 320px !important;
+    width: 100%;
+}
+.reason-to-buy {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.reason-to-buy h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em;
+    margin: 30px 0 50px;
+}
+.reason-to-buy h2 span {
+    background: #F8F8F8;
+    padding: 0 10px;
+}
+.reason-to-buy-wrapper {
+    width: 1024px;
+    max-width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.newsletter__form input {
+    width: 100%;
+    padding: 14px 15px 15px 15px;
+    color: inherit;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    font-size: 14px;
+    background: #fff;
+    -webkit-appearance: none;
+}
+.reason-to-buy-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.grid__cell {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    padding: 0 0 0 25px;
+    margin: 0;
+    vertical-align: top;
+    font-size: 1rem;
+}
+.reason-to-buy-wrapper .grid__cell {
+    padding: 0 10px;
+}
+.reason-to-buy-wrapper .grid__cell img {
+    width: 130px;
+}
+.newsletter {
+    position: relative;
+    padding: 35px 0 40px 0;
+    background: #f8f8f8;
+    text-align: center;
+    overflow: hidden;
+    clear: both;
+    box-shadow: 0 1px #f8f8f8, 0 -1px #f8f8f8;
+}
+.newsletter__title {
+    margin: 0 0 10px 0;
+    color: #585858;
+    font-size: 17px;
+    font-weight: 700;
+}
+.newsletter__form {
+    position: relative;
+    max-width: 460px;
+    margin: 0 auto;
+}
+.newsletter__form .button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 30px 13px 30px;
+    line-height: normal;
+    border-radius: 2px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: color 0.25s ease-in-out, background 0.25s ease-in-out;
+    text-align: center;
+}
+.newsletter__email {
+    padding-right: 125px !important;
+    border: none !important;
+    text-transform: uppercase !important;
+    background: #d9d9d9 !important;
+}
+.newsletter__email, .newsletter__email:focus {
+    color: #585858 !important;
+}
+.reason-to-buy h3 {
+    font-size: 1.12em;
+    font-weight: bold;
+}
+.newsletter__submit {
+    position: absolute !important;
+    padding: 11px 14px 12px 14px !important;
+    width: auto !important;
+    top: 3px !important;
+    right: 3px !important;
+    background: #f8f8f8 !important;
+    color: #585858 !important;
+}
+#shopify-section-1530704108887 {
+    margin-bottom: 0px !important;
+}
+.footer__contact a {
+  color: #585858 !important
+}
+.product-card:hover, .product-card:focus{
+  color: #8e8a8a;
+}
+.product-card__overlay-btn {
+    display: none;
+}
+.product-card__image-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+@media (max-width: 425px){
+  .reason-to-buy-wrapper .grid__cell {
+      flex: 0 50%;
+  }
+  .reason-to-buy-inner {
+    flex-wrap: wrap;
+    margin: 0px;
+}
+}
+@media only screen and (max-width: 400px){
+  .small--one-quarter {
+      width: 15%;
+  }
+}
+@media screen and (min-width: 500px){
+  .footer__title {
+      font-size: 14px;
+  }
+  .footer {
+    font-size: 13px;
+  }
+  .newsletter {
+      padding: 45px 0 48px 0;
+  }
+  .newsletter__title {
+    margin-bottom: 32px !important;
+    font-size: 20px;
+  }
+  .newsletter__submit {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+}
+@media only screen and (min-width: 700px){
+  #SiteNav {
+      float: left;
+      margin-left: 30px !important;
+  }
+  .page-width {
+      padding: 0 0px;
+  }
+}
+@media only screen and (min-width: 768px){
+  .mcc_ctrl {
+      display: none !important;
+  }
+}
+@media screen and (min-width: 801px){
+  .footer__module {
+      display: table-cell;
+      width: auto;
+      margin-top: 0;
+      padding-right: 25px;
+      vertical-align: top;
+  }
+  .footer__wrapper {
+    display: table;
+    width: 100%;
+    margin: 42px 0;
+  }
+  .inner, .container {
+      padding: 0 25px;
+  }
+  .footer__module:last-child {
+    padding-right: 0;
+  }
+}

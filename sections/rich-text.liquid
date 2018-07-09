@@ -1,0 +1,66 @@
+<div class="page-width">
+  <div class="section-block section-block--padding grid grid--no-gutters">
+    <div class="grid__item{% unless section.settings.home_page_full_width %} medium-up--two-thirds medium-up--push-one-sixth{% endunless %}">
+      {% if section.settings.section_title != blank %}
+        <h2 class="rich-text__heading--{{ section.settings.text_size }} text-center">{{ section.settings.section_title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="rte text-center rich-text__text--{{ section.settings.text_size }}">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Rich text",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "home_page_full_width",
+        "label": "Wide display"
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Heading",
+        "default": "Talk about your brand"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+      },
+      {
+        "type": "select",
+        "id": "text_size",
+        "label": "Size",
+        "default": "medium",
+        "options": [
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich text",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

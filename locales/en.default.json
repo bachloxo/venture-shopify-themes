@@ -252,6 +252,7 @@
     },
     "customer": {
       "account": "Account",
+      "login": "Login",
       "log_out": "Log out",
       "create_account": "Create account"
     },

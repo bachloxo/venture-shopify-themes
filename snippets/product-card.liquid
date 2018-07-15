@@ -8,8 +8,8 @@
 
 <a href="{{ product.url | within: collection }}" class="product-card">
   <div class="product-card__image-wrapper">
-       <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" class="product-card__image">
-  	   <img class="hidden" src="{{ product.images.last | img_url: 'large' }}" alt="{{ product.images.last.alt | escape }}" />
+       <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}" class="first">
+  	   <img class="second" src="{{ product.images.last | img_url: 'large' }}" alt="{{ product.images.last.alt | escape }}" />
   </div>
   <div class="product-card__info">
     {% if settings.product_vendor_enable %}
@@ -19,6 +19,7 @@
     {% if product.available %}
       <div class="product-card__price">
         {% if product.compare_at_price > product.price %}
+          <div class="price-sale">
           {% comment %}
             Product is on sale
           {% endcomment %}
@@ -32,8 +33,9 @@
             <span class="visually-hidden">{{ 'products.product.sale_price' | t }}</span>
             {{ product.price | money_without_trailing_zeros }}
           {% endif %}
-
+          </div>
         {% else %}
+          <div class="price-dont-sale">
           {% comment %}
             Not on sale, but could still have varying prices
           {% endcomment %}
@@ -44,7 +46,7 @@
             <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
             {{ product.price | money_without_trailing_zeros }}
           {% endif %}
-
+        </div>
         {% endif %}
 
       </div>

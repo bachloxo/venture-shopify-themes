@@ -25,7 +25,7 @@
       {% endcase %}
 
       <div class="grid grid--no-gutters grid--uniform collection">
-        <div class="grid__item small--one-half medium-up--one-fifth collection__cover">
+        <div class="grid__item small--one-half medium-up--one-third large-up--one-fifth collection__cover">
           {% if collection.image %}
             {% assign collection_image = collection | img_url: '480x480' %}
           {% else %}
@@ -39,14 +39,14 @@
           </a>
         </div>
         {% for product in collection.products limit: product_limit %}
-          <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 1 %} collection__card--first{% endif %} {% if mobile_product_limit and forloop.index > 3 %}small--hide{% elsif rows == 1 or rows == 3 %}{% if forloop.index == product_index_hide_on_mobile %}small--hide{% endif %}{% endif %}">
+          <div class="grid__item small--one-half medium-up--one-third large-up--one-fifth{% if forloop.index == 1 %} collection__card--first{% endif %} {% if mobile_product_limit and forloop.index > 3 %}small--hide{% elsif rows == 1 or rows == 3 %}{% if forloop.index == product_index_hide_on_mobile %}small--hide{% endif %}{% endif %}">
             {% include 'product-card', product: product, collection: collection %}
           </div>
         {% endfor %}
       </div>
     {% else %}
       <div class="grid grid--no-gutters grid--uniform collection">
-        <div class="grid__item small--one-half medium-up--one-fifth">
+        <div class="grid__item small--one-half medium-up--one-third large-up--one-fifth">
           <a href="{{ collection_object.url }}" class="collection-card">
             <div class="collection-card__meta">
               <p class="h1 collection-card__title">{{ 'homepage.onboarding.collection_title' | t }}</p>
@@ -67,7 +67,7 @@
             {% else %}
               {% assign index = i %}
           {% endcase %}
-          <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 1 %} collection__card--first{% endif %} {% if mobile_product_limit and forloop.index > 3 %}small--hide{% elsif rows == 1 or rows == 3 %}{% if forloop.index == product_index_hide_on_mobile %}small--hide{% endif %}{% endif %}">
+          <div class="grid__item small--one-half medium-up--one-third large-up--one-fifth{% if forloop.index == 1 %} collection__card--first{% endif %} {% if mobile_product_limit and forloop.index > 3 %}small--hide{% elsif rows == 1 or rows == 3 %}{% if forloop.index == product_index_hide_on_mobile %}small--hide{% endif %}{% endif %}">
             {% comment %}
               Replica of snippets/product-card.liquid
             {% endcomment %}
